@@ -48,7 +48,7 @@ const page = () => {
                           <AccordionTrigger>{variant}</AccordionTrigger>
                           <AccordionContent>
                             {alertSizes.map((size) => (
-                              <div key={size} className="mb-6">
+                              <div key={size} className="mb-6 grid gap-2">
                                 <Alert
                                   size={size as any}
                                   color={color as any}
@@ -61,13 +61,13 @@ const page = () => {
                                   }
                                 />
                                 <CodeComponent codeString={`
-                              <Alert
-                              size={size as any}
-                              color={color as any}
+                              <Alert 
+                              size='${size}'
+                              color='${color}'
                               title="Sample Title ${variant}"
                               content="This is a sample content (${size} size)"
-                              type={type as any}
-                              variant={variant as any}
+                              type='${type}'
+                              variant='${variant}'
                               buttonText={
                                 variant === 'Loading' ? 'Retry' : 'Click Me'
                               }
