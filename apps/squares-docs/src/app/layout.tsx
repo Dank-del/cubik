@@ -11,6 +11,7 @@ import { Toaster } from 'sonner'
 import Background from './home-page-components/components';
 import Header from './home-page-components/header';
 import Sidebar from './home-page-components/sidebar';
+import { ThemeProvider } from '@/app/home-page-components/hooks/useTheme';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -27,6 +28,7 @@ export default function RootLayout({
   return (
     <html className="light" lang="en">
       <body className={`${inter.className}`}>
+        <ThemeProvider>
         <Background />
         <Header />
         <div className="z-0 flex w-full flex-row bg-[var(--color-bg-secondary)] ">
@@ -34,6 +36,7 @@ export default function RootLayout({
           <Sidebar />
           {children}
         </div>
+        </ThemeProvider>
       </body>
     </html>
   );
