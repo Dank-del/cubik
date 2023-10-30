@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect, useContext, createContext, ReactNode } from 'react';
-
+import Cookies from 'js-cookie';
 type Theme = 'light' | 'dark';
 
 // Create a ThemeContext
@@ -22,7 +22,7 @@ interface ThemeProviderProps {
 
 function ThemeProvider({ children }: ThemeProviderProps) {
     const [theme, setTheme] = useState<Theme>(() => {
-        const storedTheme = localStorage.getItem('theme');
+        const storedTheme = Cookies.get('theme');
         return (storedTheme ?? 'light') as Theme;
     });
 
@@ -30,7 +30,7 @@ function ThemeProvider({ children }: ThemeProviderProps) {
     const toggleTheme = () => {
         setTheme((currentTheme) => {
             const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            localStorage.setItem('theme', newTheme);
+            Cookies.set('theme', newTheme);
             return newTheme;
         });
     };
