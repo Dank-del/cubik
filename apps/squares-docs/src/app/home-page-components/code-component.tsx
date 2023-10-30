@@ -8,6 +8,7 @@ import { dark } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import { Fira_Code } from 'next/font/google';
 import { Button } from '@cubik/ui';
 import { toast } from 'sonner';
+import {useTheme} from './hooks/useTheme';
 
 const firacode = Fira_Code({
   subsets: ['latin', 'cyrillic-ext'],
@@ -15,6 +16,7 @@ const firacode = Fira_Code({
 });
 
 const CodeComponent = ({ codeString }: { codeString: string }) => {
+  const {theme, toggleTheme} =  useTheme()
   // const codeString = `import { React } from 'react';`;
 
   const customStyle: CSSProperties = {
@@ -32,7 +34,7 @@ const CodeComponent = ({ codeString }: { codeString: string }) => {
         language={jsx}
         style={{
           ...githubGist,
-          ...dark
+          ...(theme === 'dark' ? dark : {}),
         }}
         customStyle={customStyle}
       >
