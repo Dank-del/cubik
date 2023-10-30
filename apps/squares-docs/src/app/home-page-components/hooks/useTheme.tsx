@@ -23,7 +23,7 @@ interface ThemeProviderProps {
 function ThemeProvider({ children }: ThemeProviderProps) {
     const [theme, setTheme] = useState<Theme>(() => {
         const storedTheme = Cookies.get('theme');
-        return (storedTheme ?? 'light') as Theme;
+        return (storedTheme ?? 'dark') as Theme;
     });
 
     // Function to toggle the theme
@@ -37,9 +37,11 @@ function ThemeProvider({ children }: ThemeProviderProps) {
 
     // Effect to update the HTML class when the theme changes
     useEffect(() => {
-        const htmlElement = document.querySelector('html');
-        if (htmlElement) {
-            htmlElement.className = theme;
+        if (typeof document !== 'undefined') {
+            const htmlElement = document.querySelector('html');
+            if (htmlElement) {
+                htmlElement.className = theme;
+            }
         }
     }, [theme]);
 
