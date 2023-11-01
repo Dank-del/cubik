@@ -4,38 +4,32 @@ import React from 'react';
 import CodeComponent from '@/app/home-page-components/code-component';
 import PageHOC from '@/app/home-page-components/components/pageHOC';
 
-import { Input } from '@cubik/ui';
+import { Popover } from '@cubik/ui';
 
-const InputPage = () => {
+const PopOverPage = () => {
   return (
     <>
       <PageHOC
         pages={[
           { name: 'Component', href: '/component', current: false },
-          {
-            name: 'Input',
-            href: '/component/input',
-            current: true,
-          },
+          { name: 'Popover', href: '/component/popover', current: true },
         ]}
-        heading={'Input'}
-        description=""
+        heading={'Popover'}
+        description={`A non-modal dialogue called Popover hovers above a trigger.`}
       >
         <div>
           <div className="border-[var(--color-border-primary) overflow-hidden rounded-[8px] border bg-[var(--white)] px-6 py-4">
-            <CodeComponent codeString='import { Input } from "@cubik/ui"' />
+            <CodeComponent codeString='import { Popover } from "@cubik/ui"' />
           </div>
-          <Input
-            leftIcon={<p>https://</p>}
-            id="aa"
-            name="aa"
-            placeholder="test@cubik.com"
-            type="text"
-          />
+          <div className="mt-10">
+            <Popover>
+              <div className="h-40 w-full bg-red-400"></div>
+            </Popover>
+          </div>
         </div>
       </PageHOC>
     </>
   );
 };
 
-export default InputPage;
+export default PopOverPage;
