@@ -1,10 +1,15 @@
 import { config } from 'dotenv';
 
-import { createComponentNames } from './src/color/component';
-import { generateSemantic } from './src/color/semantic';
+import {
+  createComponentNames,
+  generateSemantic,
+} from './src/color/generateCSS';
+import { serializeSemantic } from './src/color/serializeSemantic';
 
 console.log('Helper Script Started');
 
 config();
 
 createComponentNames();
+generateSemantic();
+console.log(JSON.stringify(serializeSemantic()));
