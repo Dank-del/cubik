@@ -1,7 +1,12 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 import { data } from './data';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 function convertStringToPrimitive(s: string) {
   const result = s
