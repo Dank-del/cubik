@@ -17,7 +17,7 @@ import {
   Tabs,
 } from '@cubik/ui';
 
-import { serializeSemantic } from '@cubik/helper-scripts';
+import { serializeSemantic } from '@cubik/helper-scripts/src/color/serializeSemantic';
 import PageHOC from '../../home-page-components/components/pageHOC';
 
 type objectType = {
