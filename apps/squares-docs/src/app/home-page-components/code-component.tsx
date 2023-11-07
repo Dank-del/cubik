@@ -10,9 +10,7 @@ import {
 } from 'react-syntax-highlighter/dist/esm/styles/hljs';
 import { toast } from 'sonner';
 
-import { Button } from '@cubik/ui';
-
-import { useTheme } from './hooks/useTheme';
+import { Button, useTheme } from '@cubik/ui';
 
 interface Props {
   codeString?: string;
@@ -37,12 +35,12 @@ const CodeComponent = ({ codeString }: { codeString: string }) => {
   return (
     <div>
       <Button
+        size="sm"
         onClick={() => {
           navigator.clipboard.writeText(codeString);
           toast.success('Copied to clipboard!');
         }}
-        className="bg-violet-500"
-        variant="secondary"
+        variant="outline"
       >
         Copy
       </Button>

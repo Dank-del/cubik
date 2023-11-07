@@ -159,6 +159,12 @@ const navigationData: INavigationData[] = [
             link: '/components/data-display/divider',
             description: '',
           },
+          {
+            id: 214,
+            name: 'Subhead',
+            link: '/components/data-display/subhead',
+            description: '',
+          },
         ],
       },
       {
@@ -277,8 +283,44 @@ const navigationData: INavigationData[] = [
           },
           {
             id: 262,
+            name: 'InputField',
+            link: '/components/forms/inputfield',
+            description: '',
+          },
+          {
+            id: 263,
             name: 'Select',
             link: '/components/forms/select',
+            description: '',
+          },
+          {
+            id: 264,
+            name: 'Input Label',
+            link: '/components/forms/inputlabel',
+            description: '',
+          },
+          {
+            id: 265,
+            name: 'Switch',
+            link: '/components/forms/switch',
+            description: '',
+          },
+          {
+            id: 266,
+            name: 'Checkbox',
+            link: '/components/forms/checkbox',
+            description: '',
+          },
+          {
+            id: 267,
+            name: 'Textarea',
+            link: '/components/forms/textarea',
+            description: '',
+          },
+          {
+            id: 268,
+            name: 'Button',
+            link: '/components/forms/button',
             description: '',
           },
         ],

@@ -7,6 +7,7 @@ import '@cubik/presets/styles/component.style.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { Header } from '@/components/Headers';
+import { AxiomWebVitals } from 'next-axiom';
 
 import { Provider } from './provider';
 
@@ -20,11 +21,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: JSX.Element }) {
   return (
     <html className="dark" lang="en">
-      <body
-        className={`bg-[var(--color-fg-alert-secondary)] ${inter.className}`}
-      >
+      <body className={`bg-[var(--color-neutral-920)] ${inter.className}`}>
         <Provider>
           <>
+            <AxiomWebVitals />
             <Header />
             {children}
           </>
