@@ -2,6 +2,7 @@
 
 import React from 'react';
 
+import { serializeSemantic } from '@cubik/helper-scripts/src/color/serializeSemantic';
 import {
   Tab,
   Table,
