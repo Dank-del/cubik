@@ -5,6 +5,6 @@
     "paths": {
       "@/*": ["./src/*"]
     },
-    "module": "es2022"
+    "module": "esnext"
   }
 }
