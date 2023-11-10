@@ -1,7 +1,6 @@
 import { AssetsByGroupResponse } from './assets.types';
 
-const url =
-  'https://mainnet.helius-rpc.com/?api-key=5618d608-71f8-4283-9d4f-c35d48a71b7e';
+const url = `https://mainnet.helius-rpc.com/?api-key=${process.env.HELIUS_API_KEY}`;
 
 const getAssetsByGroup = async (groupKey: string, groupValue: string) => {
   const response = await fetch(url, {
