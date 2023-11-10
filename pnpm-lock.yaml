@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 importers:
 
   .:
@@ -113,6 +117,9 @@ importers:
       mysql2:
         specifier: ^3.5.2
         version: 3.5.2
+      node-schedule:
+        specifier: ^2.1.1
+        version: 2.1.1
       request-ip:
         specifier: ^3.3.0
         version: 3.3.0
@@ -153,6 +160,9 @@ importers:
       '@types/multer':
         specifier: ^1.4.7
         version: 1.4.7
+      '@types/node-schedule':
+        specifier: ^2.1.3
+        version: 2.1.3
       esbuild:
         specifier: ^0.18.12
         version: 0.18.12
@@ -251,7 +261,7 @@ importers:
         version: 1.1.0(next@14.0.0)(react@18.2.0)
       prettier-plugin-tailwindcss:
         specifier: ^0.5.5
-        version: 0.5.5(prettier@3.0.3)
+        version: 0.5.5(@ianvs/prettier-plugin-sort-imports@4.1.1)(prettier@3.0.3)
       react:
         specifier: ^18
         version: 18.2.0
@@ -550,7 +560,7 @@ importers:
         version: 8.4.21
       prettier-plugin-tailwindcss:
         specifier: ^0.2.8
-        version: 0.2.8(prettier@3.0.3)
+        version: 0.2.8(@ianvs/prettier-plugin-sort-imports@4.1.1)(prettier@3.0.3)
       tailwindcss:
         specifier: ^3.3.0
         version: 3.3.0(postcss@8.4.21)
@@ -574,7 +584,7 @@ importers:
         version: 15.5.9
       next:
         specifier: 14.0.0
-        version: 14.0.0(react-dom@18.2.0)(react@18.2.0)
+        version: 14.0.0(@babel/core@7.22.9)(react-dom@18.2.0)(react@18.2.0)
       next-axiom:
         specifier: ^1.1.0
         version: 1.1.0(next@14.0.0)(react@18.2.0)
@@ -885,7 +895,7 @@ importers:
         version: 3.0.3
       prettier-plugin-tailwindcss:
         specifier: ^0.5.6
-        version: 0.5.6(@trivago/prettier-plugin-sort-imports@4.2.1)(prettier@3.0.3)
+        version: 0.5.6(@ianvs/prettier-plugin-sort-imports@4.1.1)(@trivago/prettier-plugin-sort-imports@4.2.1)(prettier@3.0.3)
       tailwindcss:
         specifier: ^3.3.5
         version: 3.3.5
@@ -967,7 +977,7 @@ importers:
         version: 0.244.0(react@18.2.0)
       next:
         specifier: 14.0.0
-        version: 14.0.0(react-dom@18.2.0)(react@18.2.0)
+        version: 14.0.0(@babel/core@7.22.9)(react-dom@18.2.0)(react@18.2.0)
       next-client-cookies:
         specifier: ^1.0.6
         version: 1.0.6(next@14.0.0)(react@18.2.0)
@@ -4639,7 +4649,6 @@ packages:
       semver: 7.5.4
     transitivePeerDependencies:
       - supports-color
-    dev: false
 
   /@isaacs/cliui@8.0.2:
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
@@ -8776,6 +8785,12 @@ packages:
       form-data: 4.0.0
     dev: false
 
+  /@types/node-schedule@2.1.3:
+    resolution: {integrity: sha512-sTWHBCD+17XjHRuxkLwoC0VdxAx/TVNny+1DUxv8RTPJNZGuokEKiSiGag+v9XdrnJ/c36ObWi4HA3JiokvOQw==}
+    dependencies:
+      '@types/node': 20.8.3
+    dev: true
+
   /@types/node@12.20.55:
     resolution: {integrity: sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==}
     dev: false
@@ -9204,7 +9219,7 @@ packages:
       react-dropzone: ^14.2.3
       uploadthing: ^5.0.0
     dependencies:
-      '@uploadthing/shared': 5.2.0(zod@3.21.4)
+      '@uploadthing/shared': 5.2.0(@uploadthing/mime-types@0.2.0)(zod@3.21.4)
       react: 18.2.0
       react-dropzone: 14.2.3(react@18.2.0)
       uploadthing: 5.3.2(zod@3.21.4)
@@ -9223,18 +9238,6 @@ packages:
         optional: true
     dependencies:
       '@uploadthing/mime-types': 0.2.0
-      zod: 3.21.4
-    dev: false
-
-  /@uploadthing/shared@5.2.0(zod@3.21.4):
-    resolution: {integrity: sha512-Mn1oYFX1XIfpU0L69wwBwOUfWbCp7ixq+8kB9aFOqmvxey8crey4gEwgPEhixfR1h42XfD7dOHKY/nOs7kkGjw==}
-    peerDependencies:
-      '@uploadthing/mime-types': ^0.2.0
-      zod: ^3.21.4
-    peerDependenciesMeta:
-      '@uploadthing/mime-types':
-        optional: true
-    dependencies:
       zod: 3.21.4
     dev: false
 
@@ -11164,6 +11167,13 @@ packages:
     resolution: {integrity: sha512-VQ2MBenTq1fWZUH9DJNGti7kKv6EeAuYr3cLwxUWhIu1baTaXh4Ib5W2CqHVqib4/MqbYGJqiL3Zb8GJZr3l4g==}
     dev: false
 
+  /cron-parser@4.9.0:
+    resolution: {integrity: sha512-p0SaNjrHOnQeR8/VnfGbmg9te2kfyYSQ7Sc/j/6DtPL3JQvKxmjO9TSjNFpujqV3vEYYBvNNvXSxzyksBWAx1Q==}
+    engines: {node: '>=12.0.0'}
+    dependencies:
+      luxon: 3.4.3
+    dev: false
+
   /cross-fetch@3.1.8:
     resolution: {integrity: sha512-cvA+JwZoU0Xq+h6WkMvAUqPEYy92Obet6UdKLfW60qn99ftItKjB5T+BkyWOFWe2pUyfQ+IJHmpOTznqk1M6Kg==}
     dependencies:
@@ -12082,7 +12092,7 @@ packages:
       eslint: 8.48.0
       eslint-import-resolver-node: 0.3.8
       eslint-import-resolver-typescript: 3.6.1(@typescript-eslint/parser@6.5.0)(eslint-import-resolver-node@0.3.8)(eslint-plugin-import@2.28.1)(eslint@8.48.0)
-      eslint-plugin-import: 2.28.1(eslint@8.48.0)
+      eslint-plugin-import: 2.28.1(@typescript-eslint/parser@6.5.0)(eslint-import-resolver-typescript@3.6.1)(eslint@8.48.0)
       eslint-plugin-jsx-a11y: 6.7.1(eslint@8.48.0)
       eslint-plugin-react: 7.33.2(eslint@8.48.0)
       eslint-plugin-react-hooks: 4.6.0(eslint@8.48.0)
@@ -12129,7 +12139,7 @@ packages:
       enhanced-resolve: 5.15.0
       eslint: 8.48.0
       eslint-module-utils: 2.8.0(@typescript-eslint/parser@6.5.0)(eslint-import-resolver-node@0.3.8)(eslint-import-resolver-typescript@3.6.1)(eslint@8.48.0)
-      eslint-plugin-import: 2.28.1(eslint@8.48.0)
+      eslint-plugin-import: 2.28.1(@typescript-eslint/parser@6.5.0)(eslint-import-resolver-typescript@3.6.1)(eslint@8.48.0)
       fast-glob: 3.3.1
       get-tsconfig: 4.6.2
       is-core-module: 2.13.0
@@ -12169,60 +12179,38 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /eslint-module-utils@2.8.0(@typescript-eslint/parser@6.5.0)(eslint-import-resolver-node@0.3.8)(eslint@8.48.0):
-    resolution: {integrity: sha512-aWajIYfsqCKRDgUfjEXNN/JlrzauMuSEy5sbd7WXbtW3EH6A6MpwEh42c7qD+MqQo9QMJ6fWLAeIJynx0g6OAw==}
+  /eslint-plugin-import@2.28.1(@typescript-eslint/parser@6.5.0)(eslint-import-resolver-typescript@3.6.1)(eslint@8.48.0):
+    resolution: {integrity: sha512-9I9hFlITvOV55alzoKBI+K9q74kv0iKMeY6av5+umsNwayt59fz692daGyjR+oStBQgx6nwR9rXldDev3Clw+A==}
     engines: {node: '>=4'}
     peerDependencies:
       '@typescript-eslint/parser': '*'
-      eslint: '*'
-      eslint-import-resolver-node: '*'
-      eslint-import-resolver-typescript: '*'
-      eslint-import-resolver-webpack: '*'
+      eslint: ^2 || ^3 || ^4 || ^5 || ^6 || ^7.2.0 || ^8
     peerDependenciesMeta:
       '@typescript-eslint/parser':
-        optional: true
-      eslint:
-        optional: true
-      eslint-import-resolver-node:
-        optional: true
-      eslint-import-resolver-typescript:
-        optional: true
-      eslint-import-resolver-webpack:
         optional: true
     dependencies:
       '@typescript-eslint/parser': 6.5.0(eslint@8.48.0)(typescript@5.2.2)
+      array-includes: 3.1.6
+      array.prototype.findlastindex: 1.2.3
+      array.prototype.flat: 1.3.1
+      array.prototype.flatmap: 1.3.1
       debug: 3.2.7
+      doctrine: 2.1.0
       eslint: 8.48.0
       eslint-import-resolver-node: 0.3.8
+      eslint-module-utils: 2.8.0(@typescript-eslint/parser@6.5.0)(eslint-import-resolver-node@0.3.8)(eslint-import-resolver-typescript@3.6.1)(eslint@8.48.0)
+      has: 1.0.3
+      is-core-module: 2.13.0
+      is-glob: 4.0.3
+      minimatch: 3.1.2
+      object.fromentries: 2.0.6
+      object.groupby: 1.0.1
+      object.values: 1.1.6
+      semver: 6.3.1
+      tsconfig-paths: 3.14.2
     transitivePeerDependencies:
-      - supports-color
-    dev: false
-
-  /eslint-module-utils@2.8.0(eslint-import-resolver-node@0.3.8)(eslint@8.48.0):
-    resolution: {integrity: sha512-aWajIYfsqCKRDgUfjEXNN/JlrzauMuSEy5sbd7WXbtW3EH6A6MpwEh42c7qD+MqQo9QMJ6fWLAeIJynx0g6OAw==}
-    engines: {node: '>=4'}
-    peerDependencies:
-      '@typescript-eslint/parser': '*'
-      eslint: '*'
-      eslint-import-resolver-node: '*'
-      eslint-import-resolver-typescript: '*'
-      eslint-import-resolver-webpack: '*'
-    peerDependenciesMeta:
-      '@typescript-eslint/parser':
-        optional: true
-      eslint:
-        optional: true
-      eslint-import-resolver-node:
-        optional: true
-      eslint-import-resolver-typescript:
-        optional: true
-      eslint-import-resolver-webpack:
-        optional: true
-    dependencies:
-      debug: 3.2.7
-      eslint: 8.48.0
-      eslint-import-resolver-node: 0.3.8
-    transitivePeerDependencies:
+      - eslint-import-resolver-typescript
+      - eslint-import-resolver-webpack
       - supports-color
 
   /eslint-plugin-import@2.28.1(@typescript-eslint/parser@6.5.0)(eslint@8.48.0):
@@ -12244,7 +12232,7 @@ packages:
       doctrine: 2.1.0
       eslint: 8.48.0
       eslint-import-resolver-node: 0.3.8
-      eslint-module-utils: 2.8.0(@typescript-eslint/parser@6.5.0)(eslint-import-resolver-node@0.3.8)(eslint@8.48.0)
+      eslint-module-utils: 2.8.0(@typescript-eslint/parser@6.5.0)(eslint-import-resolver-node@0.3.8)(eslint-import-resolver-typescript@3.6.1)(eslint@8.48.0)
       has: 1.0.3
       is-core-module: 2.13.0
       is-glob: 4.0.3
@@ -12259,39 +12247,6 @@ packages:
       - eslint-import-resolver-webpack
       - supports-color
     dev: false
-
-  /eslint-plugin-import@2.28.1(eslint@8.48.0):
-    resolution: {integrity: sha512-9I9hFlITvOV55alzoKBI+K9q74kv0iKMeY6av5+umsNwayt59fz692daGyjR+oStBQgx6nwR9rXldDev3Clw+A==}
-    engines: {node: '>=4'}
-    peerDependencies:
-      '@typescript-eslint/parser': '*'
-      eslint: ^2 || ^3 || ^4 || ^5 || ^6 || ^7.2.0 || ^8
-    peerDependenciesMeta:
-      '@typescript-eslint/parser':
-        optional: true
-    dependencies:
-      array-includes: 3.1.6
-      array.prototype.findlastindex: 1.2.3
-      array.prototype.flat: 1.3.1
-      array.prototype.flatmap: 1.3.1
-      debug: 3.2.7
-      doctrine: 2.1.0
-      eslint: 8.48.0
-      eslint-import-resolver-node: 0.3.8
-      eslint-module-utils: 2.8.0(eslint-import-resolver-node@0.3.8)(eslint@8.48.0)
-      has: 1.0.3
-      is-core-module: 2.13.0
-      is-glob: 4.0.3
-      minimatch: 3.1.2
-      object.fromentries: 2.0.6
-      object.groupby: 1.0.1
-      object.values: 1.1.6
-      semver: 6.3.1
-      tsconfig-paths: 3.14.2
-    transitivePeerDependencies:
-      - eslint-import-resolver-typescript
-      - eslint-import-resolver-webpack
-      - supports-color
 
   /eslint-plugin-jest@27.6.0(@typescript-eslint/eslint-plugin@6.5.0)(eslint@8.48.0)(typescript@5.2.2):
     resolution: {integrity: sha512-MTlusnnDMChbElsszJvrwD1dN3x6nZl//s4JD23BxB6MgR66TZlL064su24xEIS3VACfAoHV1vgyMgPw8nkdng==}
@@ -14932,6 +14887,10 @@ packages:
     engines: {node: '>= 0.6.0'}
     dev: false
 
+  /long-timeout@0.1.1:
+    resolution: {integrity: sha512-BFRuQUqc7x2NWxfJBCyUrN8iYUYznzL9JROmRz1gZ6KlOIgmoD+njPVbb+VNn2nGMKggMsK79iUNErillsrx7w==}
+    dev: false
+
   /long@5.2.3:
     resolution: {integrity: sha512-lcHwpNoggQTObv5apGNCTdJrO69eHOZMi4BNC+rTLER8iHAqGrUVeLh/irVIM7zTw2bOXA8T6uNPeujwOLg/2Q==}
     dev: false
@@ -16074,7 +16033,7 @@ packages:
       react: '>= 16.8.0'
     dependencies:
       js-cookie: 3.0.5
-      next: 14.0.0(react-dom@18.2.0)(react@18.2.0)
+      next: 14.0.0(@babel/core@7.22.9)(react-dom@18.2.0)(react@18.2.0)
       react: 18.2.0
     dev: false
 
@@ -16105,45 +16064,6 @@ packages:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
       styled-jsx: 5.1.1(@babel/core@7.22.9)(react@18.2.0)
-      watchpack: 2.4.0
-    optionalDependencies:
-      '@next/swc-darwin-arm64': 14.0.0
-      '@next/swc-darwin-x64': 14.0.0
-      '@next/swc-linux-arm64-gnu': 14.0.0
-      '@next/swc-linux-arm64-musl': 14.0.0
-      '@next/swc-linux-x64-gnu': 14.0.0
-      '@next/swc-linux-x64-musl': 14.0.0
-      '@next/swc-win32-arm64-msvc': 14.0.0
-      '@next/swc-win32-ia32-msvc': 14.0.0
-      '@next/swc-win32-x64-msvc': 14.0.0
-    transitivePeerDependencies:
-      - '@babel/core'
-      - babel-plugin-macros
-    dev: false
-
-  /next@14.0.0(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-J0jHKBJpB9zd4+c153sair0sz44mbaCHxggs8ryVXSFBuBqJ8XdE9/ozoV85xGh2VnSjahwntBZZgsihL9QznA==}
-    engines: {node: '>=18.17.0'}
-    hasBin: true
-    peerDependencies:
-      '@opentelemetry/api': ^1.1.0
-      react: ^18.2.0
-      react-dom: ^18.2.0
-      sass: ^1.3.0
-    peerDependenciesMeta:
-      '@opentelemetry/api':
-        optional: true
-      sass:
-        optional: true
-    dependencies:
-      '@next/env': 14.0.0
-      '@swc/helpers': 0.5.2
-      busboy: 1.6.0
-      caniuse-lite: 1.0.30001519
-      postcss: 8.4.31
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      styled-jsx: 5.1.1(react@18.2.0)
       watchpack: 2.4.0
     optionalDependencies:
       '@next/swc-darwin-arm64': 14.0.0
@@ -16232,6 +16152,15 @@ packages:
 
   /node-releases@2.0.13:
     resolution: {integrity: sha512-uYr7J37ae/ORWdZeQ1xxMJe3NtdmqMC/JZK+geofDrkLUApKRHPd18/TxtBOJ4A0/+uUIliorNrfYV6s1b02eQ==}
+
+  /node-schedule@2.1.1:
+    resolution: {integrity: sha512-OXdegQq03OmXEjt2hZP33W2YPs/E5BcFQks46+G2gAxs4gHOIVD1u7EqlYLYSKsaIpyKCK9Gbk0ta1/gjRSMRQ==}
+    engines: {node: '>=6'}
+    dependencies:
+      cron-parser: 4.9.0
+      long-timeout: 0.1.1
+      sorted-array-functions: 1.3.0
+    dev: false
 
   /node-stream-zip@1.15.0:
     resolution: {integrity: sha512-LN4fydt9TqhZhThkZIVQnF9cwjU3qmUH9h78Mx/K7d3VvfRqqwthLwJEUOEL0QPZ0XQmNN7be5Ggit5+4dq3Bw==}
@@ -16961,7 +16890,7 @@ packages:
       fast-diff: 1.3.0
     dev: false
 
-  /prettier-plugin-tailwindcss@0.2.8(prettier@3.0.3):
+  /prettier-plugin-tailwindcss@0.2.8(@ianvs/prettier-plugin-sort-imports@4.1.1)(prettier@3.0.3):
     resolution: {integrity: sha512-KgPcEnJeIijlMjsA6WwYgRs5rh3/q76oInqtMXBA/EMcamrcYJpyhtRhyX1ayT9hnHlHTuO8sIifHF10WuSDKg==}
     engines: {node: '>=12.17.0'}
     peerDependencies:
@@ -17010,6 +16939,7 @@ packages:
       prettier-plugin-twig-melody:
         optional: true
     dependencies:
+      '@ianvs/prettier-plugin-sort-imports': 4.1.1(prettier@2.8.8)
       prettier: 3.0.3
     dev: true
 
@@ -17069,7 +16999,7 @@ packages:
       prettier: 3.0.3
     dev: false
 
-  /prettier-plugin-tailwindcss@0.5.5(prettier@3.0.3):
+  /prettier-plugin-tailwindcss@0.5.5(@ianvs/prettier-plugin-sort-imports@4.1.1)(prettier@3.0.3):
     resolution: {integrity: sha512-voy0CjWv/CM8yeaduv5ZwovovpTGMR5LbzlhGF+LtEvMJt9wBeVTVnW781hL38R/RcDXCJwN2rolsgr94B/n0Q==}
     engines: {node: '>=14.21.3'}
     peerDependencies:
@@ -17121,6 +17051,64 @@ packages:
       prettier-plugin-twig-melody:
         optional: true
     dependencies:
+      '@ianvs/prettier-plugin-sort-imports': 4.1.1(prettier@2.8.8)
+      prettier: 3.0.3
+    dev: false
+
+  /prettier-plugin-tailwindcss@0.5.6(@ianvs/prettier-plugin-sort-imports@4.1.1)(@trivago/prettier-plugin-sort-imports@4.2.1)(prettier@3.0.3):
+    resolution: {integrity: sha512-2Xgb+GQlkPAUCFi3sV+NOYcSI5XgduvDBL2Zt/hwJudeKXkyvRS65c38SB0yb9UB40+1rL83I6m0RtlOQ8eHdg==}
+    engines: {node: '>=14.21.3'}
+    peerDependencies:
+      '@ianvs/prettier-plugin-sort-imports': '*'
+      '@prettier/plugin-pug': '*'
+      '@shopify/prettier-plugin-liquid': '*'
+      '@shufo/prettier-plugin-blade': '*'
+      '@trivago/prettier-plugin-sort-imports': '*'
+      prettier: ^3.0
+      prettier-plugin-astro: '*'
+      prettier-plugin-css-order: '*'
+      prettier-plugin-import-sort: '*'
+      prettier-plugin-jsdoc: '*'
+      prettier-plugin-marko: '*'
+      prettier-plugin-organize-attributes: '*'
+      prettier-plugin-organize-imports: '*'
+      prettier-plugin-style-order: '*'
+      prettier-plugin-svelte: '*'
+      prettier-plugin-twig-melody: '*'
+    peerDependenciesMeta:
+      '@ianvs/prettier-plugin-sort-imports':
+        optional: true
+      '@prettier/plugin-pug':
+        optional: true
+      '@shopify/prettier-plugin-liquid':
+        optional: true
+      '@shufo/prettier-plugin-blade':
+        optional: true
+      '@trivago/prettier-plugin-sort-imports':
+        optional: true
+      prettier-plugin-astro:
+        optional: true
+      prettier-plugin-css-order:
+        optional: true
+      prettier-plugin-import-sort:
+        optional: true
+      prettier-plugin-jsdoc:
+        optional: true
+      prettier-plugin-marko:
+        optional: true
+      prettier-plugin-organize-attributes:
+        optional: true
+      prettier-plugin-organize-imports:
+        optional: true
+      prettier-plugin-style-order:
+        optional: true
+      prettier-plugin-svelte:
+        optional: true
+      prettier-plugin-twig-melody:
+        optional: true
+    dependencies:
+      '@ianvs/prettier-plugin-sort-imports': 4.1.1(prettier@2.8.8)
+      '@trivago/prettier-plugin-sort-imports': 4.2.1(prettier@3.0.3)
       prettier: 3.0.3
     dev: false
 
@@ -17178,62 +17166,6 @@ packages:
     dependencies:
       '@ianvs/prettier-plugin-sort-imports': 4.1.1(prettier@2.8.8)
       prettier: 2.8.8
-    dev: false
-
-  /prettier-plugin-tailwindcss@0.5.6(@trivago/prettier-plugin-sort-imports@4.2.1)(prettier@3.0.3):
-    resolution: {integrity: sha512-2Xgb+GQlkPAUCFi3sV+NOYcSI5XgduvDBL2Zt/hwJudeKXkyvRS65c38SB0yb9UB40+1rL83I6m0RtlOQ8eHdg==}
-    engines: {node: '>=14.21.3'}
-    peerDependencies:
-      '@ianvs/prettier-plugin-sort-imports': '*'
-      '@prettier/plugin-pug': '*'
-      '@shopify/prettier-plugin-liquid': '*'
-      '@shufo/prettier-plugin-blade': '*'
-      '@trivago/prettier-plugin-sort-imports': '*'
-      prettier: ^3.0
-      prettier-plugin-astro: '*'
-      prettier-plugin-css-order: '*'
-      prettier-plugin-import-sort: '*'
-      prettier-plugin-jsdoc: '*'
-      prettier-plugin-marko: '*'
-      prettier-plugin-organize-attributes: '*'
-      prettier-plugin-organize-imports: '*'
-      prettier-plugin-style-order: '*'
-      prettier-plugin-svelte: '*'
-      prettier-plugin-twig-melody: '*'
-    peerDependenciesMeta:
-      '@ianvs/prettier-plugin-sort-imports':
-        optional: true
-      '@prettier/plugin-pug':
-        optional: true
-      '@shopify/prettier-plugin-liquid':
-        optional: true
-      '@shufo/prettier-plugin-blade':
-        optional: true
-      '@trivago/prettier-plugin-sort-imports':
-        optional: true
-      prettier-plugin-astro:
-        optional: true
-      prettier-plugin-css-order:
-        optional: true
-      prettier-plugin-import-sort:
-        optional: true
-      prettier-plugin-jsdoc:
-        optional: true
-      prettier-plugin-marko:
-        optional: true
-      prettier-plugin-organize-attributes:
-        optional: true
-      prettier-plugin-organize-imports:
-        optional: true
-      prettier-plugin-style-order:
-        optional: true
-      prettier-plugin-svelte:
-        optional: true
-      prettier-plugin-twig-melody:
-        optional: true
-    dependencies:
-      '@trivago/prettier-plugin-sort-imports': 4.2.1(prettier@3.0.3)
-      prettier: 3.0.3
     dev: false
 
   /prettier@2.8.8:
@@ -18927,6 +18859,10 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
+  /sorted-array-functions@1.3.0:
+    resolution: {integrity: sha512-2sqgzeFlid6N4Z2fUQ1cvFmTOLRi/sEDzSQ0OKYchqgoPmQBVyM3959qYx3fpS6Esef80KjmpgPeEr028dP3OA==}
+    dev: false
+
   /source-map-js@1.0.2:
     resolution: {integrity: sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==}
     engines: {node: '>=0.10.0'}
@@ -19226,23 +19162,6 @@ packages:
         optional: true
     dependencies:
       '@babel/core': 7.22.9
-      client-only: 0.0.1
-      react: 18.2.0
-    dev: false
-
-  /styled-jsx@5.1.1(react@18.2.0):
-    resolution: {integrity: sha512-pW7uC1l4mBZ8ugbiZrcIsiIvVx1UmTfw7UkC3Um2tmfUq9Bhk8IiyEIPl6F8agHgjzku6j0xQEZbfA5uSgSaCw==}
-    engines: {node: '>= 12.0.0'}
-    peerDependencies:
-      '@babel/core': '*'
-      babel-plugin-macros: '*'
-      react: '>= 16.8.0 || 17.x.x || ^18.0.0-0'
-    peerDependenciesMeta:
-      '@babel/core':
-        optional: true
-      babel-plugin-macros:
-        optional: true
-    dependencies:
       client-only: 0.0.1
       react: 18.2.0
     dev: false
@@ -20829,7 +20748,3 @@ packages:
   /zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
     dev: false
-
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false

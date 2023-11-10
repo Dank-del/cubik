@@ -8,9 +8,11 @@ import express from 'express';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import morganBody from 'morgan-body';
+import { scheduleJob } from 'node-schedule';
 import { tokenRouter } from 'routes';
 import { authRouter } from 'routes/auth.router';
 import { uploadRouter } from 'routes/upload.router';
+import { syncCommunity } from 'service/community-sync/cron';
 
 import logger from './middleware/logger';
 
@@ -47,6 +49,8 @@ const main = async () => {
   app.use(basePath + '/upload', uploadRouter);
 
   app.listen(PORT, () => {
+    logger.log('info', 'Adding Sync Community Cron Job');
+    scheduleJob('0 0 * * *', syncCommunity);
     logger.log('info', `Server is running on Port:${PORT}`);
   });
 };
