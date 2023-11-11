@@ -4,10 +4,6 @@ import { COMM, prisma } from '@cubik/database';
 
 import getAssetsByGroup from './getAssetsByGroup';
 
-interface Collection {
-  collection: string;
-}
-
 async function syncCommunity() {
   const users = await prisma.user.findMany({
     select: {
@@ -22,9 +18,10 @@ async function syncCommunity() {
       id: true,
     },
   });
+  // console.log(users, communities);
   communities.forEach(async (community) => {
     if (community.method === COMM.MINT_ADD) {
-      const collections = community.collection as unknown as Collection[];
+      const collections = community.collection as unknown as string[];
       const communityMembers = await prisma.communityMembers.findMany({
         select: {
           id: true,
@@ -33,7 +30,7 @@ async function syncCommunity() {
         },
       });
       collections.map(async (entry) => {
-        const response = await getAssetsByGroup('collection', entry.collection);
+        const response = await getAssetsByGroup('collection', entry);
         // if a user by wallet address from the response.results map exists in communityMembers, do nothing, if not, add them, if they are in communityMembers but not in the response, remove them
         response?.map(async (asset) => {
           const user = users.find(
@@ -43,7 +40,11 @@ async function syncCommunity() {
             const member = communityMembers.find(
               (member) => member.userId === user.id,
             );
+            if (member) {
+              console.log(`${user.id} in communityMembers, doing nothing...`);
+            }
             if (!member) {
+              console.log(`${user.id} not in communityMembers, adding...`);
               await prisma.communityMembers.create({
                 data: {
                   userId: user.id,
@@ -56,14 +57,15 @@ async function syncCommunity() {
         // remove user by wallet address who don't have an asset in the response
         communityMembers.map(async (member) => {
           const user = users.find((user) => user.id === member.userId);
-          const response = await getAssetsByGroup(
-            'collection',
-            entry.collection,
-          );
+          const response = await getAssetsByGroup('collection', entry);
           const asset = response.find(
             (asset) => asset.ownership?.owner === user?.mainWallet,
           );
+          if (asset) {
+            console.log(`${user?.id} in response, doing nothing...`);
+          }
           if (!asset) {
+            console.log(`${user?.id} not in response, removing...`);
             await prisma.communityMembers.delete({
               where: {
                 id: member.id,

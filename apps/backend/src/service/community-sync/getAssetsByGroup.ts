@@ -10,7 +10,7 @@ const getAssetsByGroup = async (groupKey: string, groupValue: string) => {
     },
     body: JSON.stringify({
       jsonrpc: '2.0',
-      id: 'my-id',
+      id: 'sync-data',
       method: 'getAssetsByGroup',
       params: {
         groupKey: groupKey,
@@ -21,6 +21,7 @@ const getAssetsByGroup = async (groupKey: string, groupValue: string) => {
     }),
   });
   const res = (await response.json()) as AssetsByGroupResponse;
+  // console.log('res', res);
   let assets = res.result.items;
   let currentPage = 1;
   while (assets.length < res.result.total) {
@@ -32,7 +33,7 @@ const getAssetsByGroup = async (groupKey: string, groupValue: string) => {
       },
       body: JSON.stringify({
         jsonrpc: '2.0',
-        id: 'my-id',
+        id: 'sync-data',
         method: 'getAssetsByGroup',
         params: {
           groupKey: groupKey,
