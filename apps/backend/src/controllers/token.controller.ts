@@ -1,9 +1,14 @@
 import type { Request, Response } from 'express';
 import { tokenPrice } from 'utils/price';
 
+const tokens = ['SOL', 'USDC', 'ETH'];
+
 export const tokenPriceController = async (req: Request, res: Response) => {
   try {
     const { token } = req.params;
+    if (tokens.includes(token) === false) {
+      return res.status(400).json({ error: 'Invalid token' });
+    }
     const data = await tokenPrice(token);
 
     res.status(200).json({
@@ -19,8 +24,6 @@ export const tokenPriceController = async (req: Request, res: Response) => {
 };
 export const tokenPriceMultiple = async (req: Request, res: Response) => {
   try {
-    const tokens = ['SOL', 'USDC', 'ETH'];
-
     const prices = await Promise.all(
       tokens.map(async (token: string) => {
         const data = await tokenPrice(token);
