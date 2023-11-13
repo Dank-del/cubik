@@ -17,8 +17,8 @@ const initialState: {
 
 const TokenPriceContext = createContext<
   | {
-      state: any;
-      dispatch: React.Dispatch<{ type: any; payload: any }>;
+      state: TokenPriceResponse[];
+      dispatch: React.Dispatch<{ type: string; payload: TokenPriceResponse[] }>;
     }
   | undefined
 >(undefined);
@@ -73,7 +73,7 @@ const useTokenPrice = () => {
     },
   });
 
-  return { tokenPrice: state.tokenPrice, error };
+  return { data: state, error };
 };
 
 export { TokenPriceProvider, useTokenPrice };
