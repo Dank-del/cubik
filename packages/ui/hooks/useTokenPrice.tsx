@@ -55,7 +55,9 @@ const useTokenContext = () => {
 
 // Custom hook for fetching token price
 const fetchTokenPrice = async () => {
-  const response = await fetch('http://localhost:8000/api/v1/price/SOL');
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BACKEND}/api/v1/price/all`,
+  );
   const { result } = await response.json();
   return result;
 };
