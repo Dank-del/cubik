@@ -1,7 +1,11 @@
 'use client';
 
 import React, { createContext, ReactNode, useContext, useReducer } from 'react';
-import { useQuery } from '@tanstack/react-query';
+import {
+  QueryClient,
+  QueryClientProvider,
+  useQuery,
+} from '@tanstack/react-query';
 
 interface TokenPriceResponse {
   price: number;
@@ -37,11 +41,14 @@ const tokenPriceReducer = (
 
 const TokenPriceProvider = ({ children }: { children: ReactNode }) => {
   const [state, dispatch] = useReducer(tokenPriceReducer, initialState);
+  const queryClient = new QueryClient();
 
   return (
-    <TokenPriceContext.Provider value={{ state, dispatch }}>
-      {children}
-    </TokenPriceContext.Provider>
+    <QueryClientProvider client={queryClient}>
+      <TokenPriceContext.Provider value={{ state, dispatch }}>
+        {children}
+      </TokenPriceContext.Provider>
+    </QueryClientProvider>
   );
 };
 
