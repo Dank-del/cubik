@@ -2,8 +2,14 @@ import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 
 import { prisma } from '@cubik/database';
+import { checkRateLimit } from '@/utils/helpers/rate-limit';
 
 export async function POST(request: NextRequest) {
+  const res = NextResponse.next();
+  const limit = await checkRateLimit(request, res);
+  if (limit !== true) {
+    return NextResponse.json(limit, { status: 429 });
+  }
   try {
     const { eventId } = await request.json();
     console.log(eventId);
@@ -49,18 +55,18 @@ export async function POST(request: NextRequest) {
           (e) => e.projectId === contri.projectId && e.user === contri.user,
         ) >= 0 &&
         projectMapContribution[
-          projectMapContribution?.findIndex(
-            (e) =>
-              e.projectId === contri?.projectId && e?.user === contri?.user,
-          )
+        projectMapContribution?.findIndex(
+          (e) =>
+            e.projectId === contri?.projectId && e?.user === contri?.user,
+        )
         ]
       ) {
         const current =
           projectMapContribution[
-            projectMapContribution?.findIndex(
-              (e) =>
-                e.projectId === contri?.projectId && e?.user === contri?.user,
-            )
+          projectMapContribution?.findIndex(
+            (e) =>
+              e.projectId === contri?.projectId && e?.user === contri?.user,
+          )
           ];
         projectMapContribution[
           projectMapContribution?.findIndex(

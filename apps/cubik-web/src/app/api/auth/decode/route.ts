@@ -1,9 +1,15 @@
 import { cookies } from 'next/headers';
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
 import { decodeToken } from '@cubik/auth';
+import { checkRateLimit } from '@/utils/helpers/rate-limit';
 
-export const GET = async () => {
+export const GET = async (req: NextRequest) => {
+  const res = NextResponse.next();
+  const limit = await checkRateLimit(req, res);
+  if (limit !== true) {
+    return NextResponse.json(limit, { status: 429 });
+  }
   const cookieStore = cookies();
   const authCookie = cookieStore.get('authToken');
 

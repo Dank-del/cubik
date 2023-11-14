@@ -6,8 +6,14 @@ import { getTrackInfo } from '@/utils/helpers/track';
 import { decodeToken } from '@cubik/auth';
 import type { AuthCheckReturn } from '@cubik/common-types';
 import { prisma } from '@cubik/database';
+import { checkRateLimit } from '@/utils/helpers/rate-limit';
 
 export const POST = async (req: NextRequest) => {
+  const res = NextResponse.next();
+  const limit = await checkRateLimit(req, res);
+  if (limit !== true) {
+    return NextResponse.json(limit, { status: 429 });
+  }
   try {
     const { wallet } = await req.json();
 

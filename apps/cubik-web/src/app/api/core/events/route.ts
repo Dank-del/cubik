@@ -1,8 +1,14 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
 import { prisma } from '@cubik/database';
+import { checkRateLimit } from '@/utils/helpers/rate-limit';
 
-export async function GET() {
+export async function GET(req: NextRequest) {
+  const res = NextResponse.next();
+  const limit = await checkRateLimit(req, res);
+  if (limit !== true) {
+    return NextResponse.json(limit, { status: 429 });
+  }
   try {
     const hackathonPromise = prisma.hackathon.findMany({
       where: {

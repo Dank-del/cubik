@@ -1,7 +1,13 @@
+import { checkRateLimit } from '@/utils/helpers/rate-limit';
 import { cookies } from 'next/headers';
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
-export const POST = async () => {
+export const POST = async (req: NextRequest) => {
+  const res = NextResponse.next();
+  const limit = await checkRateLimit(req, res);
+  if (limit !== true) {
+    return NextResponse.json(limit, { status: 429 });
+  }
   try {
     const cookieStore = cookies();
     cookieStore.delete('authToken');

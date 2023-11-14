@@ -8,8 +8,14 @@ import { utils, web3 } from '@coral-xyz/anchor';
 import { createToken, verifyMessage } from '@cubik/auth';
 import type { AuthPayload } from '@cubik/common-types';
 import { prisma } from '@cubik/database';
+import { checkRateLimit } from '@/utils/helpers/rate-limit';
 
 export const POST = async (req: NextRequest) => {
+  const res = NextResponse.next();
+  const limit = await checkRateLimit(req, res);
+  if (limit !== true) {
+    return NextResponse.json(limit, { status: 429 });
+  }
   try {
     const { signature, publicKey } = await req.json();
     const headersList = headers();
