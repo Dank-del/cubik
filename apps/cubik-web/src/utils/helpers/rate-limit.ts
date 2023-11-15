@@ -9,7 +9,7 @@ const redis = new Redis({
 
 const ratelimit = new Ratelimit({
     redis: redis,
-    limiter: Ratelimit.fixedWindow(5, "5 s"),
+    limiter: Ratelimit.fixedWindow(Number(process.env.MAX_REQUESTS_PER_WINDOW ?? 1), `${Number(process.env.WINDOW_SIZE ?? 5)} s`),
 });
 
 /**
