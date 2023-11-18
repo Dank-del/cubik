@@ -25,6 +25,6 @@ export const uploadURLsToCloudflare = async (url: string, id: string) => {
     return response.data as CloudflareResponseType;
   } catch (error) {
     // fs.writeFileSync(id + ".json", JSON.stringify(error));
-    console.log(error);
+    // console.log(error);
   }
 };

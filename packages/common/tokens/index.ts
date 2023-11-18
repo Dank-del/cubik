@@ -3,7 +3,13 @@
  * All credit goes to Jupiter Team
  */
 
+import fs from 'fs';
+
 import { Token } from '@cubik/common-types/src/token';
+
+export const newTokenList = JSON.parse(
+  fs.readFileSync('../../../packages/helper-scripts/tokenList.json', 'utf-8'),
+) as Token[];
 
 export const tokenList: Token[] = [
   {
